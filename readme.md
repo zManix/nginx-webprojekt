@@ -3,7 +3,7 @@
 ## 🔹 1. Repository klonen
 Öffnen Sie ein Terminal oder PowerShell und klonen Sie das Repository:
 ```powershell
-git clone https://github.com/IHR_GITHUB_USERNAME/nginx-webprojekt.git
+git clone https://github.com/zmanix/nginx-webprojekt.git
 cd nginx-webprojekt
 ```
 
