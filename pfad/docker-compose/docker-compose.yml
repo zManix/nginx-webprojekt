@@ -2,6 +2,6 @@ version: "3"
 
 services:
   web:
-    image: mein-dockerhub-name/uebungsprojekt:1.0
+    build: .
     ports:
       - "8080:80"
