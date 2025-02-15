@@ -3,15 +3,15 @@
 ## 🔹 1. Repository klonen
 Öffnen Sie ein Terminal oder PowerShell und klonen Sie das Repository:
 ```powershell
-git clone https://github.com/zmanix/nginx-webprojekt.git
-cd nginx-webprojekt
+git clone https://github.com/zManix/uebungsprojekt.git
+cd uebungsprojekt
 ```
 
 ---
 
 ## 🔹 2. Docker-Container starten
 ```powershell
-docker-compose up -d
+docker-compose -f pfad/docker-compose/docker-compose.yml up -d --build
 ```
 ➡️ Das `-d` sorgt dafür, dass die Container im Hintergrund laufen.
 
@@ -28,6 +28,8 @@ docker ps
 http://localhost:8080
 ```
 Hier sehen Sie eine **statische HTML-Webseite mit Bildern**, gehostet mit **Nginx**.
+
+Falls Port 8080 bereits belegt ist, siehe Abschnitt **Port-Probleme beheben** unten.
 
 ---
 
@@ -49,7 +51,7 @@ Falls **Port 8080 bereits in Benutzung** ist, ändern Sie in `docker-compose.yml
 
 🔹 **Datei öffnen:**
 ```powershell
-notepad docker-compose.yml
+notepad pfad/docker-compose/docker-compose.yml
 ```
 🔹 **Ändern Sie die Ports:**
 ```yaml
@@ -59,9 +61,26 @@ ports:
 🔹 **Speichern & Neustarten:**
 ```powershell
 docker-compose down
-docker-compose up -d
+docker-compose up -d --build
 ```
 Dann auf **`http://localhost:9090`** zugreifen.
+
+---
+
+## 🔹 6. Falls Docker Desktop oder WSL2 Fehler auftreten
+Falls Sie den Fehler **"The network name cannot be found"** in Docker Desktop sehen, versuchen Sie Folgendes:
+```powershell
+wsl --shutdown
+wsl --unregister docker-desktop
+wsl --unregister docker-desktop-data
+Start-Process "C:\Program Files\Docker\Docker\Docker Desktop.exe"
+```
+Falls WSL2 nicht korrekt installiert ist:
+```powershell
+wsl --install
+wsl --set-default-version 2
+```
+Falls Docker immer noch nicht läuft, prüfen Sie in Docker Desktop unter **Settings > Resources > WSL Integration**, ob die Integration aktiviert ist.
 
 ---
 
@@ -71,4 +90,3 @@ Falls Probleme auftreten, kontaktieren Sie mich oder öffnen Sie ein **Issue auf
 ---
 
 ## 🚀 Viel Erfolg mit der Installation!
-
